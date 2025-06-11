@@ -1,0 +1,13 @@
+# pyproject.toml
+[tool.mutmut]
+paths_to_mutate = "./src"
+runner = "pytest -x"  # -x to stop on first failure, faster
+tests_dir = "./tests/unit"
+# Define paths to skip, if any.
+# For example, __init__.py files, config files, or files with no complex logic.
+# We'll start without skips and add them if necessary based on initial results.
+# path_skips = [
+#    ".*/__init__.py",
+#    ".*/config.py",
+#    ".*/main.py" # If main is mostly wiring and has less complex logic
+# ]

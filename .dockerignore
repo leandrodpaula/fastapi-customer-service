@@ -1,0 +1,21 @@
+# .dockerignore
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+.git/
+.github/
+.pytest_cache/
+.mutmut-cache/
+*.db
+*.sqlite3
+*.log
+*.DS_Store
+terraform/
+*.tfstate*
+.env
+# Add other files or directories that should not be included in the Docker image

@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+motor
+python-dotenv
+strawberry-graphql[fastapi]
+# For dev and testing
+pytest
+pytest-asyncio
+httpx
+mutmut

@@ -1,0 +1,11 @@
+# src/infrastructure/database/config.py
+import os
+from dotenv import load_dotenv
+
+load_dotenv() # Load environment variables from .env file
+
+class MongoConfig:
+    MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
+    MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "clean_arch_db")
+
+mongo_config = MongoConfig()
