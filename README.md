@@ -12,6 +12,7 @@ This project implements a Customer management API using FastAPI, GraphQL (Strawb
     -   [2. Set up Environment Variables](#2-set-up-environment-variables)
     -   [3. Create Virtual Environment and Install Dependencies](#3-create-virtual-environment-and-install-dependencies)
 -   [Running the Application Locally](#running-the-application-locally)
+-   [API Endpoints](#api-endpoints)
 -   [Running Unit Tests](#running-unit-tests)
 -   [Building the Docker Image](#building-the-docker-image)
 -   [Deployment to Google Cloud Run](#deployment-to-google-cloud-run)
@@ -131,8 +132,58 @@ uvicorn src.interfaces.api.main:app --reload --host 0.0.0.0 --port 8000
 
 The API will be accessible at `http://localhost:8000`.
 The GraphQL interface (Strawberry) will be available at `http://localhost:8000/graphql`.
+The REST API documentation (Swagger UI) will be available at `http://localhost:8000/docs`.
 
 You can interact with it using tools like Postman, Insomnia, or directly through your browser for GraphQL.
+
+## API Endpoints
+
+This project exposes functionality through both GraphQL and RESTful HTTP endpoints.
+
+### GraphQL API
+
+-   **Endpoint**: `/graphql`
+-   **Interface**: Interactive GraphQL interface (Strawberry/GraphiQL) available in browser.
+-   **Operations**:
+    -   **Queries**: `customers`, `customer(id)`
+    -   **Mutations**: `createCustomer`, `updateCustomer`, `deleteCustomer`
+
+    Refer to the GraphQL schema (accessible via the interactive interface) for detailed request and response structures.
+
+### RESTful API
+
+FastAPI automatically generates OpenAPI (Swagger) documentation for REST endpoints.
+
+-   **OpenAPI Docs**: `/docs` (Swagger UI)
+-   **OpenAPI Spec**: `/openapi.json`
+
+#### Create Customer
+
+-   **Endpoint**: `POST /customers/`
+-   **Description**: Creates a new customer.
+-   **Request Body**: JSON object with the following fields:
+    -   `name` (string, required): Name of the customer.
+    -   `email` (string, required, valid email format): Email address of the customer.
+    Example:
+    ```json
+    {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com"
+    }
+    ```
+-   **Success Response (201 CREATED)**: JSON object representing the created customer, including its `id`.
+    Example:
+    ```json
+    {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "id": "generated-uuid-string"
+    }
+    ```
+-   **Error Responses**:
+    -   `400 Bad Request`: If a customer with the given email already exists, or other validation errors from the service layer.
+    -   `422 Unprocessable Entity`: If the request body fails Pydantic validation (e.g., invalid email format, missing fields).
+    -   `500 Internal Server Error`: For unexpected errors.
 
 ## Running Unit Tests
 
