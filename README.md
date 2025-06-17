@@ -121,6 +121,7 @@ Install the required Python packages:
 ```bash
 pip install -r requirements.txt
 ```
+This will install all necessary packages, including FastAPI, Strawberry (for GraphQL), Motor (for MongoDB), Pydantic with email validation support (`pydantic[email]`), and testing tools.
 
 ## Running the Application Locally
 

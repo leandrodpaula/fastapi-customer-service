@@ -3,6 +3,7 @@ uvicorn[standard]
 motor
 python-dotenv
 strawberry-graphql[fastapi]
+pydantic[email]
 # For dev and testing
 pytest
 pytest-asyncio
