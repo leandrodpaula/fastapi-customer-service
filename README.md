@@ -151,6 +151,8 @@ This project exposes functionality through both GraphQL and RESTful HTTP endpoin
 
     Refer to the GraphQL schema (accessible via the interactive interface) for detailed request and response structures.
 
+  **Swagger UI Examples**: Example GraphQL request bodies (queries/mutations) can also be found within the Swagger UI (`/docs`) for the `/graphql` POST endpoint, under its 'examples' section.
+
 ### RESTful API
 
 FastAPI automatically generates OpenAPI (Swagger) documentation for REST endpoints.
